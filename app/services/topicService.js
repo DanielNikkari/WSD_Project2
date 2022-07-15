@@ -9,10 +9,15 @@ const addTopic = async (user_id, name) => {
   );
 };
 
+// Delete topic from the database using id
+const deleteTopic = async (id) => {
+  await executeQuery("DELETE FROM topics WHERE id = $1;", id);
+};
+
 // Get all topics from the topics table
 const getTopics = async () => {
   const res = await executeQuery("SELECT * FROM topics ORDER BY name ASC;");
   return res.rows;
 };
 
-export { addTopic, getTopics };
+export { addTopic, deleteTopic, getTopics };

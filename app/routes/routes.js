@@ -10,5 +10,6 @@ router.get("/", mainController.showMain);
 // topics routes
 router.get("/topics", topicController.listTopics);
 router.post("/topics", topicController.addTopic);
+router.post("/topics/:id/delete", topicController.deleteTopic);
 
 export { router };
