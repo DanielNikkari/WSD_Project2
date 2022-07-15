@@ -4,7 +4,8 @@
 
 - [x] Main page and navigation to topics and questions
 - [x] Adding and listing topics
-- [ ] Removing topics and topic input validation
+- [x] Removing topics and topic input validation
+- [ ] Add authentication for adding and deleting topics
 - [ ] Adding and listing questions for topics
 - [ ] Viewing the question and adding answer options
 - [ ] Removing answer options and questions
