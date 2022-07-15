@@ -1,9 +1,10 @@
-# Project 2: Quiz
+# WSB Project 2: Quiz
 
 ### To-Do
 
-- [ ] Adding and listing topics
-- [ ] Removing topics
+- [x] Main page and navigation to topics and questions
+- [x] Adding and listing topics
+- [ ] Removing topics and topic input validation
 - [ ] Adding and listing questions for topics
 - [ ] Viewing the question and adding answer options
 - [ ] Removing answer options and questions
