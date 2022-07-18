@@ -8,7 +8,7 @@ import { router } from "./routes/routes.js";
 const app = new Application();
 
 app.use(errorMiddleware);
-app.use(authMiddleware);
+//app.use(authMiddleware);
 app.use(serveStaticMiddleware);
 app.use(renderMiddleware);
 app.use(router.routes());
