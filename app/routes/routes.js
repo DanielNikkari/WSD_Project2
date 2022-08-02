@@ -2,6 +2,7 @@ import { Router } from "../deps.js";
 import * as mainController from "./controllers/mainController.js";
 import * as topicController from "./controllers/topicController.js";
 import * as questionController from "./controllers/qestionsController.js";
+import * as answerController from "./controllers/answerController.js";
 
 const router = new Router();
 
@@ -16,5 +17,12 @@ router.post("/topics/:id/delete", topicController.deleteTopic);
 // Questions routes
 router.get("/topics/:id", questionController.listQuestions);
 router.post("/topics/:id/questions", questionController.addQuestion);
+
+// Answer routes
+router.get("/topics/:id/questions/:qId", answerController.listAnswerOptions);
+router.post(
+  "/topics/:id/questions/:qId/options",
+  answerController.addAnswerOption
+);
 
 export { router };

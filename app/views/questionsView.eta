@@ -13,7 +13,7 @@
     <ul>
     <% it.questions.forEach(question => { %>
         <li>
-            <a href="/topics/<%= it.topic.id %>/question/<%= question.id %>"><%= question.question_text %></a>
+            <a href="/topics/<%= it.topic.id %>/questions/<%= question.id %>"><%= question.question_text %></a>
         </li>
     <% }); %> 
     </ul>
