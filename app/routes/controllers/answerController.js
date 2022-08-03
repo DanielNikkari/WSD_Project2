@@ -67,4 +67,10 @@ const listAnswerOptions = async ({ params, render }) => {
   });
 };
 
-export { addAnswerOption, listAnswerOptions };
+// Delete answer option with id
+const deleteAnswerOption = async ({ params, response }) => {
+  await answerService.deleteAnswerOption(params.oId);
+  response.redirect(`/topics/${params.tId}/questions/${params.qId}`);
+};
+
+export { addAnswerOption, listAnswerOptions, deleteAnswerOption };

@@ -19,10 +19,15 @@ const getAnswerOptions = async (qId) => {
   return res.rows;
 };
 
+// Delete answer option with id
+const deleteAnswerOption = async (oId) => {
+  await executeQuery("DELETE FROM question_answer_options WHERE id = $1;", oId);
+};
+
 // Get question
 const getQuestion = async (qId) => {
   const res = await executeQuery("SELECT * FROM questions WHERE id = $1;", qId);
   return res.rows;
 };
 
-export { addAnswerOption, getAnswerOptions, getQuestion };
+export { addAnswerOption, getAnswerOptions, deleteAnswerOption, getQuestion };

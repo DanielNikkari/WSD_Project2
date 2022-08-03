@@ -11,10 +11,19 @@
 </form>
 
 <h2>Answer options:</h2>
+<% if (it.answerOptions && it.answerOptions.length > 0) { %>
 <ul>
 <% it.answerOptions.forEach(option => { %>
     <li>
         <%= option.option_text %> <br/>Is correct: <%= option.is_correct %>
+        <form method="post" action="/topics/<%= it.topic.id %>/questions/<%= it.question.id %>/options/<%= option.id %>/delete">
+            <input type="submit" value="Delete option">
+        </form>
     </li>
 <% }) %>
 </ul>
+<% } else { %>
+    <form method="post" action="/topics/<%= it.topic.id %>/questions/<%= it.question.id %>/delete">
+        <input type="submit" value="Delete question">
+    </form>
+<% } %>

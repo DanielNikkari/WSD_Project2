@@ -7,7 +7,7 @@
 - [x] Removing topics and topic input validation
 - [x] Adding and listing questions for topics
 - [x] Viewing the question and adding answer options
-- [ ] Removing answer options and questions
+- [x] Removing answer options and questions
 - [ ] Registration functionality
 - [ ] Login functionality
 - [ ] Asking questions

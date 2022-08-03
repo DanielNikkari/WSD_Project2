@@ -17,12 +17,20 @@ router.post("/topics/:id/delete", topicController.deleteTopic);
 // Questions routes
 router.get("/topics/:id", questionController.listQuestions);
 router.post("/topics/:id/questions", questionController.addQuestion);
+router.post(
+  "/topics/:tId/questions/:qId/delete",
+  questionController.deleteQuestion
+);
 
 // Answer routes
 router.get("/topics/:id/questions/:qId", answerController.listAnswerOptions);
 router.post(
   "/topics/:id/questions/:qId/options",
   answerController.addAnswerOption
+);
+router.post(
+  "/topics/:tId/questions/:qId/options/:oId/delete",
+  answerController.deleteAnswerOption
 );
 
 export { router };

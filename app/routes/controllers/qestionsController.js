@@ -52,4 +52,10 @@ const listQuestions = async ({ params, render }) => {
   });
 };
 
-export { listQuestions, addQuestion };
+// Delete a question with id
+const deleteQuestion = async ({ params, response }) => {
+  await questionService.deleteQuestion(params.qId);
+  response.redirect(`/topics/${params.tId}`);
+};
+
+export { listQuestions, addQuestion, deleteQuestion };
