@@ -3,11 +3,21 @@ import * as mainController from "./controllers/mainController.js";
 import * as topicController from "./controllers/topicController.js";
 import * as questionController from "./controllers/qestionsController.js";
 import * as answerController from "./controllers/answerController.js";
+import * as registerationController from "./controllers/registrationController.js";
+import * as loginController from "./controllers/loginController.js";
 
 const router = new Router();
 
 // main route
 router.get("/", mainController.showMain);
+
+// Registeration routes
+router.get("/auth/register", registerationController.showRegisterationForm);
+router.post("/auth/register", registerationController.registerUser);
+
+// Login routes
+router.get("/auth/login", loginController.showLoginForm);
+router.post("/auth/login", loginController.processLogin);
 
 // topics routes
 router.get("/topics", topicController.listTopics);

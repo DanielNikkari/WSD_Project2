@@ -8,8 +8,8 @@
 - [x] Adding and listing questions for topics
 - [x] Viewing the question and adding answer options
 - [x] Removing answer options and questions
-- [ ] Registration functionality
-- [ ] Login functionality
+- [x] Registration functionality
+- [x] Login functionality
 - [ ] Asking questions
 - [ ] API
 - [ ] Access control
