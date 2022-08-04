@@ -38,4 +38,9 @@ const showLoginForm = async ({ render, state }) => {
   render("login.eta", { data: { email: "" }, user: user });
 };
 
-export { processLogin, showLoginForm };
+const processLogout = async ({ state, response }) => {
+  await state.session.set("user", undefined);
+  response.redirect("/auth/login");
+};
+
+export { processLogin, showLoginForm, processLogout };

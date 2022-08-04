@@ -21,6 +21,9 @@ router.post("/auth/register", registerationController.registerUser);
 router.get("/auth/login", loginController.showLoginForm);
 router.post("/auth/login", loginController.processLogin);
 
+// Logout route
+router.get("/auth/logout", loginController.processLogout);
+
 // topics routes
 router.get("/topics", topicController.listTopics);
 router.post("/topics", topicController.addTopic);

@@ -8,5 +8,13 @@
 <p>Current number of questions: <%= it.statistics[1] %></p>
 <p>Current number of question answers: <%= it.statistics[2] %></p>
 
-<a href="/auth/register" class="btn btn-outline-primary">Register</a>
-<a href="/auth/login" class="btn btn-primary">Login</a>
+<% if (it.user && it.user.email) { %>  
+    <span class="navbar-text mr-3 h5">
+        Already logged in as <%= it.user.email %>
+      </span>
+    </br>
+      <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
+<% } else { %>
+    <a href="/auth/register" class="btn btn-outline-primary">Register</a>
+    <a href="/auth/login" class="btn btn-primary">Login</a>
+<% } %>

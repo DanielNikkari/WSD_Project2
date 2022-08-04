@@ -15,9 +15,10 @@
         <li class="nav-item"><a class="nav-link h3" href="/quiz">Quiz</a></li>
     </ul>
     <% if (it.user && it.user.email) { %>  
-        <span class="navbar-text">
+        <span class="navbar-text mr-3">
             Logged in as <%= it.user.email %>
           </span>
+          <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
     <% } else { %>
         <a href="/auth/register" class="btn btn-outline-primary mr-1">Register</a>
         <a href="/auth/login" class="btn btn-primary mr-1">Login</a>
