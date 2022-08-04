@@ -2,7 +2,7 @@ import { executeQuery } from "../database/database.js";
 
 // Get quiz topics
 const quizTopics = async () => {
-  const res = await executeQuery("SELECT * FROM topics;");
+  const res = await executeQuery("SELECT * FROM topics ORDER BY name ASC;");
   return res.rows;
 };
 
@@ -39,6 +39,7 @@ const questionQuizOption = async (oId) => {
   return res.rows;
 };
 
+// Get correct option for a question
 const correctOption = async (qId) => {
   const res = await executeQuery(
     "SELECT * FROM question_answer_options WHERE question_id = $1 AND is_correct = TRUE;",
@@ -47,6 +48,7 @@ const correctOption = async (qId) => {
   return res.rows;
 };
 
+// Save the answer made by the user
 const saveAnswer = async (uId, qId, oId) => {
   await executeQuery(
     "INSERT INTO question_answers (user_id, question_id, question_answer_option_id) VALUES ($1, $2, $3);",
@@ -54,6 +56,12 @@ const saveAnswer = async (uId, qId, oId) => {
     qId,
     oId
   );
+};
+
+// Get all questions for a topic with topic id
+const getAllQuestions = async () => {
+  const res = await executeQuery("SELECT * FROM questions;");
+  return res.rows;
 };
 
 export {
@@ -64,4 +72,5 @@ export {
   questionQuizOption,
   correctOption,
   saveAnswer,
+  getAllQuestions,
 };

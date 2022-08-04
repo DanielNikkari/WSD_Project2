@@ -16,7 +16,6 @@ const getQuestions = async (topicId) => {
     "SELECT * FROM questions WHERE topic_id = $1;",
     topicId
   );
-  console.log(res.rows);
   return res.rows;
 };
 

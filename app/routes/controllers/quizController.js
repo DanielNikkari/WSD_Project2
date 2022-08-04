@@ -60,7 +60,7 @@ const showRandomQuestion = async ({ params, render }) => {
 };
 
 const checkIfCorrect = async ({ params, response, state }) => {
-  console.log((await state.session.get("user")).id);
+  //console.log((await state.session.get("user")).id);
   await quizService.saveAnswer(
     (
       await state.session.get("user")
