@@ -27,7 +27,7 @@ const validate = (data) => {
 };
 
 // Controller for adding a question
-const addQuestion = async ({ params, request, response, render }) => {
+const addQuestion = async ({ params, request, response, render, state }) => {
   const data = await getData(request);
   data.errors = validate(data);
   //console.log(params.id);
@@ -39,7 +39,13 @@ const addQuestion = async ({ params, request, response, render }) => {
       topic: { id: params.id },
     });
   } else {
-    await questionService.addQuestion(1, params.id, data.text);
+    await questionService.addQuestion(
+      (
+        await state.session.get("user")
+      ).id,
+      params.id,
+      data.text
+    );
     response.redirect(`/topics/${params.id}`);
   }
 };

@@ -29,7 +29,7 @@ const validate = (data) => {
 };
 
 // Controller for adding a topic
-const addTopic = async ({ request, response, render }) => {
+const addTopic = async ({ request, response, render, state }) => {
   const data = await getData(request);
   data.errors = validate(data);
   if (data.errors.length > 0) {
@@ -38,7 +38,12 @@ const addTopic = async ({ request, response, render }) => {
       topics: await topicService.getTopics(),
     });
   } else {
-    await topicService.addTopic(1, data.name);
+    await topicService.addTopic(
+      (
+        await state.session.get("user")
+      ).id,
+      data.name
+    );
     response.redirect("/topics");
   }
 };

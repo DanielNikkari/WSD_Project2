@@ -15,15 +15,18 @@ const processLogin = async ({ request, render, state, response }) => {
     render("login.eta", { data: data });
     return;
   }
-  const user = userFromDB[0];
-  const passwordMatches = await bcrypt.compare(data.password, user.password);
 
+  const user = userFromDB[0];
+
+  // Check if password matches
+  const passwordMatches = await bcrypt.compare(data.password, user.password);
   if (!passwordMatches) {
     data.errors.push("Wrong password.");
     render("login.eta", { data: data });
     return;
   }
 
+  // Storing the user into session if everything checks out
   await state.session.set("user", user);
   response.redirect("/topics");
 };
