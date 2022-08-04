@@ -32,7 +32,8 @@ const validate = (data) => {
 };
 
 // Add an answer option
-const addAnswerOption = async ({ params, request, response, render }) => {
+const addAnswerOption = async ({ params, request, response, rende, state }) => {
+  const user = await state.session.get("user");
   const data = await getData(request);
   data.errors = validate(data);
   if (data.errors.length > 0) {
@@ -44,6 +45,7 @@ const addAnswerOption = async ({ params, request, response, render }) => {
       },
       answerOptions: await answerService.getAnswerOptions(params.qId),
       topic: { id: params.id },
+      user: user,
     });
   } else {
     await answerService.addAnswerOption(
@@ -56,7 +58,8 @@ const addAnswerOption = async ({ params, request, response, render }) => {
 };
 
 // List answer options for a question
-const listAnswerOptions = async ({ params, render }) => {
+const listAnswerOptions = async ({ params, render, state }) => {
+  const user = await state.session.get("user");
   render("answerOptionView.eta", {
     question: {
       text: (await answerService.getQuestion(params.qId))[0].question_text,
@@ -64,6 +67,7 @@ const listAnswerOptions = async ({ params, render }) => {
     },
     answerOptions: await answerService.getAnswerOptions(params.qId),
     topic: { id: params.id },
+    user: user,
   });
 };
 

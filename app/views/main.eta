@@ -8,5 +8,5 @@
 <p>Current number of questions: <%= it.statistics[1] %></p>
 <p>Current number of question answers: <%= it.statistics[2] %></p>
 
-<a href="/auth/register">Register</a>
-<a href="/auth/login">Login</a>
+<a href="/auth/register" class="btn btn-outline-primary">Register</a>
+<a href="/auth/login" class="btn btn-primary">Login</a>

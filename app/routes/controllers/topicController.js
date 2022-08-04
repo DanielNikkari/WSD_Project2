@@ -40,6 +40,7 @@ const addTopic = async ({ request, response, render, state }) => {
     render("topicsView.eta", {
       data: data,
       topics: await topicService.getTopics(),
+      user: user,
     });
   } else {
     await topicService.addTopic(

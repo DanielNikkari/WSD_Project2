@@ -3,6 +3,7 @@ import * as userService from "../../services/userService.js";
 
 // Process login - check if user exists in the database and check if password is correct
 const processLogin = async ({ request, render, state, response }) => {
+  const userPrev = await state.session.get("user");
   const data = { email: "", password: "", errors: [] };
   const body = request.body({ type: "form" });
   const values = await body.value;
@@ -22,7 +23,7 @@ const processLogin = async ({ request, render, state, response }) => {
   const passwordMatches = await bcrypt.compare(data.password, user.password);
   if (!passwordMatches) {
     data.errors.push("Wrong password.");
-    render("login.eta", { data: data });
+    render("login.eta", { data: data, user: userPrev });
     return;
   }
 
@@ -32,8 +33,9 @@ const processLogin = async ({ request, render, state, response }) => {
 };
 
 // Show login page
-const showLoginForm = ({ render }) => {
-  render("login.eta", { data: { email: "" } });
+const showLoginForm = async ({ render, state }) => {
+  const user = await state.session.get("user");
+  render("login.eta", { data: { email: "" }, user: user });
 };
 
 export { processLogin, showLoginForm };

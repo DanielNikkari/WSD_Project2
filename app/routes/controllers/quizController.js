@@ -1,9 +1,13 @@
 import * as quizService from "../../services/quizService.js";
 
 // Show quiz topics
-const showTopics = async ({ render }) => {
+const showTopics = async ({ render, state }) => {
+  const user = await state.session.get("user");
   questions = [];
-  render("quizTopics.eta", { topics: await quizService.quizTopics() });
+  render("quizTopics.eta", {
+    topics: await quizService.quizTopics(),
+    user: user,
+  });
 };
 
 // Global variable for preventing getting same question two or more times in a row
@@ -12,7 +16,8 @@ var questions = [];
 var latestTopicId = 0;
 
 // Select a random question for a topic
-const selectRandomQuestion = async ({ params, response, render }) => {
+const selectRandomQuestion = async ({ params, response, render, state }) => {
+  const user = await state.session.get("user");
   // Check if the topic has changed and empty the questions array
   if (latestTopicId !== params.tId) {
     latestTopicId = params.tId;
@@ -46,17 +51,19 @@ const selectRandomQuestion = async ({ params, response, render }) => {
           "Unfortunately there are no questions available for this topic.",
         ],
       },
+      user: user,
     });
     return;
   }
 };
 
 // Show the question and answer options
-const showRandomQuestion = async ({ params, render }) => {
+const showRandomQuestion = async ({ params, render, state }) => {
+  const user = await state.session.get("user");
   const data = { question: {}, answerOptions: [], tId: params.tId };
   data.question = (await quizService.getQuestion(params.qId))[0];
   data.answerOptions = await quizService.questionQuizOptions(params.qId);
-  render("quizQuestion.eta", { data: data });
+  render("quizQuestion.eta", { data: data, user: user });
 };
 
 const checkIfCorrect = async ({ params, response, state }) => {
@@ -78,19 +85,23 @@ const checkIfCorrect = async ({ params, response, state }) => {
 };
 
 // Render if correct
-const correct = async ({ params, render }) => {
+const correct = async ({ params, render, state }) => {
+  const user = await state.session.get("user");
   render("quizAnswerCheck.eta", {
     answer: { correctness: true, fix: "" },
     tId: params.tId,
+    user: user,
   });
 };
 
 // Render if incorrect
-const incorrect = async ({ params, render }) => {
+const incorrect = async ({ params, render, state }) => {
+  const user = await state.session.get("user");
   const correctOption = (await quizService.correctOption(params.qId))[0];
   render("quizAnswerCheck.eta", {
     answer: { correctness: false, fix: correctOption.option_text },
     tId: params.tId,
+    user: user,
   });
 };
 

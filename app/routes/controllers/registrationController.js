@@ -1,7 +1,7 @@
 import { bcrypt, validasaur } from "../../deps.js";
 import * as userService from "../../services/userService.js";
 
-const registerUser = async ({ request, response, render }) => {
+const registerUser = async ({ request, response, render, state }) => {
   const data = { email: "", password: "", errors: [] };
   const validationRules = {
     email: [validasaur.required, validasaur.isEmail],
@@ -37,12 +37,18 @@ const registerUser = async ({ request, response, render }) => {
       }
     }
     //console.log(data.errors);
-    render("register.eta", { data: data });
+    render("register.eta", {
+      data: data,
+      user: await state.session.get("user"),
+    });
   }
 };
 
-const showRegisterationForm = ({ render }) => {
-  render("register.eta", { data: { email: "" } });
+const showRegisterationForm = async ({ render, state }) => {
+  render("register.eta", {
+    data: { email: "" },
+    user: await state.session.get("user"),
+  });
 };
 
 export { showRegisterationForm, registerUser };

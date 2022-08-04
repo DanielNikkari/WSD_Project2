@@ -37,6 +37,7 @@ const addQuestion = async ({ params, request, response, render, state }) => {
       data: data,
       questions: await questionService.getQuestions(params.id),
       topic: { id: params.id },
+      user: await state.session.get("user"),
     });
   } else {
     await questionService.addQuestion(
@@ -51,10 +52,11 @@ const addQuestion = async ({ params, request, response, render, state }) => {
 };
 
 // Controller for listing questions of a topic
-const listQuestions = async ({ params, render }) => {
+const listQuestions = async ({ params, render, state }) => {
   render("questionsView.eta", {
     questions: await questionService.getQuestions(params.id),
     topic: { id: params.id },
+    user: await state.session.get("user"),
   });
 };
 
