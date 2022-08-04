@@ -1,8 +1,9 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Quiz</h1>
+<div class="text-center">
+<h1 class="p-4">Quiz</h1>
 
-<h3>Application for making fun quizes for various topics!</h3>
+<h3 class="pb-3">Application for making fun quizes for various topics!</h3>
 
 <p>Current number of topics: <%= it.statistics[0] %></p>
 <p>Current number of questions: <%= it.statistics[1] %></p>
@@ -18,3 +19,4 @@
     <a href="/auth/register" class="btn btn-outline-primary">Register</a>
     <a href="/auth/login" class="btn btn-primary">Login</a>
 <% } %>
+</div>

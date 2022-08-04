@@ -1,32 +1,32 @@
 <% layout('./layouts/layout.eta') %>
 
 <% if (it.user && it.user.admin == true) { %>
-<h2>Add topic</h2>
+<h2 class="py-4">Add topic</h2>
 
-<div class="form-group">
+
 <form method="POST" action="/topics">
-    Name:<br/>
-    <input class="form-control" type="text" name="name" value="<%= it.data.name %>"><br/>
-    <input class="form-control" type="submit" value="Add">
+    <div class="form-group">
+    Name of the topic:<br/>
+    <input class="form-control mt-3" type="text" name="name" value="<%= it.data.name %>"><br/>
+    <input class="mt-0 btn btn-outline-success" type="submit" value="Add">
+    </div>
 </form>
-</div>
+
 <% } %>
 
-<h1>Add questions to the topics</h1>
+<h1 class="py-3">Add questions to the topics</h1>
 
-<h2>Topics</h2>
+<h2 class="py-2">Topics</h2>
 
 <% if (it.topics && it.topics.length > 0) { %>
-    <ul>
+    <ul style="list-style-type: none;" class="bg-light rounded">
     <% it.topics.forEach(topic => { %>
-        <li>
-            <a href="/topics/<%= topic.id %>"><%= topic.name %></a>
+        <li class="py-3">
+            <a style="text-decoration: none;" class="h3" href="/topics/<%= topic.id %>"><%= topic.name %></a>
             <% if (it.user && it.user.admin == true) { %>
-                <div class="form-group">
                 <form method="POST" action="/topics/<%= topic.id %>/delete">
-                    <input class="form-control" type="submit" value="Delete">
+                    <input class="btn btn-outline-danger my-2" type="submit" value="Delete">
                 </form>
-                </div>
             <% } %>
         </li>
     <% }); %> 

@@ -1,13 +1,17 @@
 <% layout("./layouts/layout.eta") %>
 
-<h1>Register</h1>
+<div class="text-center">
+<h1 class="p-4">Register</h1>
 
 <form method="post" action="/auth/register">
-    Email:</br>
-    <input type="email" name="email" value="<%= it.data.email %>"></br>
+    <div class="form-group">
+    Email address:</br>
+    <input class="" type="email" name="email" value="<%= it.data.email %>"></br>
     Password:</br>
     <input type="password" name="password"></br>
-    <input type="submit" value="Register">
+    <input class="mt-3 btn btn-outline-success" type="submit" value="Register">
+</div>
 </form>
 
-<a href="/auth/login">Login</a>
+<a href="/auth/login" class="btn btn-outline-primary">Login</a>
+</div>

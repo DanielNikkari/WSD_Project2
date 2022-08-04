@@ -3,7 +3,7 @@
 <p class="random_question"><%= it.data.question.question_text %></p>
 
 <% if (it.data.answerOptions && it.data.answerOptions.length > 0) { %>
-<ul>
+<ul style="list-style-type: none;">
     <% it.data.answerOptions.forEach(option => { %>
         <li>
             <%= option.option_text %></br>
