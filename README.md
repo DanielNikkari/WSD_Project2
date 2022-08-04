@@ -10,7 +10,7 @@
 - [x] Removing answer options and questions
 - [x] Registration functionality
 - [x] Login functionality
-- [ ] Asking questions
+- [x] Asking questions
 - [ ] API
 - [ ] Access control
 - [ ] Styles

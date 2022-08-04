@@ -1,0 +1,19 @@
+<% layout('./layouts/layout.eta') %>
+
+<p class="random_question"><%= it.data.question.question_text %></p>
+
+<% if (it.data.answerOptions && it.data.answerOptions.length > 0) { %>
+<ul>
+    <% it.data.answerOptions.forEach(option => { %>
+        <li>
+            <%= option.option_text %></br>
+            <form method="post" action="/quiz/<%= it.data.tId %>/questions/<%= it.data.question.id %>/options/<%= option.id %>">
+                <input type="submit" value="Choose">
+            </form>
+        </li>
+    <% }) %>
+</ul>
+<% } else { %>
+    <p>No answer options found...</p>
+    <a href="/quiz/<%= it.data.tId %>">Next question</a>
+<% } %>

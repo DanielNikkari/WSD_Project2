@@ -5,6 +5,7 @@ import * as questionController from "./controllers/qestionsController.js";
 import * as answerController from "./controllers/answerController.js";
 import * as registerationController from "./controllers/registrationController.js";
 import * as loginController from "./controllers/loginController.js";
+import * as quizController from "./controllers/quizController.js";
 
 const router = new Router();
 
@@ -41,6 +42,17 @@ router.post(
 router.post(
   "/topics/:tId/questions/:qId/options/:oId/delete",
   answerController.deleteAnswerOption
+);
+
+// Quiz routes
+router.get("/quiz", quizController.showTopics);
+router.get("/quiz/:tId", quizController.selectRandomQuestion);
+router.get("/quiz/:tId/questions/:qId", quizController.showRandomQuestion);
+router.get("/quiz/:tId/questions/:qId/correct", quizController.correct);
+router.get("/quiz/:tId/questions/:qId/incorrect", quizController.incorrect);
+router.post(
+  "/quiz/:tId/questions/:qId/options/:oId",
+  quizController.checkIfCorrect
 );
 
 export { router };
