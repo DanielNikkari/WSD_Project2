@@ -30,8 +30,12 @@ const validate = (data) => {
 
 // Controller for adding a topic
 const addTopic = async ({ request, response, render, state }) => {
+  const user = await state.session.get("user");
   const data = await getData(request);
   data.errors = validate(data);
+  if (!user.admin) {
+    data.errors.push("You must be an admin to add a topic!");
+  }
   if (data.errors.length > 0) {
     render("topicsView.eta", {
       data: data,
@@ -49,15 +53,26 @@ const addTopic = async ({ request, response, render, state }) => {
 };
 
 // Controller for deleting a topic with id
-const deleteTopic = async ({ params, response }) => {
+const deleteTopic = async ({ params, response, state }) => {
+  const user = await state.session.get("user");
+  if (!user.admin) {
+    response.body = "You must be an admin to delete a topic!";
+    response.redirect("/topics");
+    return;
+  }
   await topicService.deleteTopic(params.id);
   response.redirect("/topics");
 };
 
 // Controller for listing topics
-const listTopics = async ({ render }) => {
+const listTopics = async ({ render, state }) => {
   const topics = await topicService.getTopics();
-  render("topicsView.eta", { topics: topics, data: { name: "" } });
+  //console.log(await state.session.get("user"));
+  render("topicsView.eta", {
+    topics: topics,
+    data: { name: "" },
+    user: await state.session.get("user"),
+  });
 };
 
 export { addTopic, listTopics, deleteTopic };

@@ -1,5 +1,6 @@
 <% layout('./layouts/layout.eta') %>
 
+<% if (it.user && it.user.admin == true) { %>
 <h2>Add topic</h2>
 
 <form method="POST" action="/topics">
@@ -7,6 +8,7 @@
     <input type="text" name="name" value="<%= it.data.name %>"><br/>
     <input type="submit" value="Add">
 </form>
+<% } %>
 
 <h1>Topics</h1>
 
@@ -15,9 +17,11 @@
     <% it.topics.forEach(topic => { %>
         <li>
             <a href="/topics/<%= topic.id %>"><%= topic.name %></a>
-            <form method="POST" action="/topics/<%= topic.id %>/delete">
-                <input type="submit" value="Delete">
-            </form>
+            <% if (it.user && it.user.admin == true) { %>
+                <form method="POST" action="/topics/<%= topic.id %>/delete">
+                    <input type="submit" value="Delete">
+                </form>
+            <% } %>
         </li>
     <% }); %> 
     </ul>
