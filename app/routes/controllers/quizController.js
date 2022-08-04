@@ -13,14 +13,17 @@ var latestTopicId = 0;
 
 // Select a random question for a topic
 const selectRandomQuestion = async ({ params, response, render }) => {
+  // Check if the topic has changed and empty the questions array
   if (latestTopicId !== params.tId) {
     latestTopicId = params.tId;
     questions = [];
   }
+  // If the questions array is empy fetch a new one from the database
   if (questions.length === 0) {
     console.log("NEW FETCH...");
     questions = await quizService.quizQuestions(params.tId);
   }
+  // Fetch a random question and remove it from the array
   if (questions && questions.length > 0) {
     const randomQuestion =
       questions[Math.floor(Math.random() * questions.length)];
@@ -33,6 +36,7 @@ const selectRandomQuestion = async ({ params, response, render }) => {
       response.redirect(`/quiz/${params.tId}/questions/${randomQuestion.id}`);
     } else {
       response.status = 404;
+      return;
     }
   } else {
     render("quizTopics.eta", {
@@ -55,7 +59,15 @@ const showRandomQuestion = async ({ params, render }) => {
   render("quizQuestion.eta", { data: data });
 };
 
-const checkIfCorrect = async ({ params, response }) => {
+const checkIfCorrect = async ({ params, response, state }) => {
+  console.log((await state.session.get("user")).id);
+  await quizService.saveAnswer(
+    (
+      await state.session.get("user")
+    ).id,
+    params.qId,
+    params.oId
+  );
   const data = { answerOption: {}, tId: params.tId };
   data.answerOption = (await quizService.questionQuizOption(params.oId))[0];
   if (data.answerOption && data.answerOption.is_correct == true) {

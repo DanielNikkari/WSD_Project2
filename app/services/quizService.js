@@ -47,6 +47,15 @@ const correctOption = async (qId) => {
   return res.rows;
 };
 
+const saveAnswer = async (uId, qId, oId) => {
+  await executeQuery(
+    "INSERT INTO question_answers (user_id, question_id, question_answer_option_id) VALUES ($1, $2, $3);",
+    uId,
+    qId,
+    oId
+  );
+};
+
 export {
   quizTopics,
   quizQuestions,
@@ -54,4 +63,5 @@ export {
   questionQuizOptions,
   questionQuizOption,
   correctOption,
+  saveAnswer,
 };
