@@ -1,7 +1,7 @@
 <% layout('./layouts/layout.eta') %>
 
 <% if (it.user && it.user.admin == true) { %>
-<h2 class="py-4">Add topic</h2>
+<h2 class="py-4 text-primary">Add topic</h2>
 
 
 <form method="POST" action="/topics">
@@ -14,7 +14,7 @@
 
 <% } %>
 
-<h1 class="py-3">Add questions to the topics</h1>
+<h1 class="py-3 text-success">Modify the topics</h1>
 
 <h2 class="py-2">Topics</h2>
 
@@ -32,5 +32,5 @@
     <% }); %> 
     </ul>
 <% } else { %>
-    <p>No topics available.</p>
+    <p class="h3 bg-warning rounded">No topics available.</p>
 <% } %>

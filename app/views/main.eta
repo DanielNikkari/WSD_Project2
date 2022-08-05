@@ -1,22 +1,22 @@
 <% layout("./layouts/layout.eta") %>
 
 <div class="text-center">
-<h1 class="p-4">Quiz</h1>
+<h1 class="p-4 text-primary display-4">Quiz</h1>
 
 <h3 class="pb-3">Application for making fun quizes for various topics!</h3>
 
-<p>Current number of topics: <%= it.statistics[0] %></p>
-<p>Current number of questions: <%= it.statistics[1] %></p>
-<p>Current number of question answers: <%= it.statistics[2] %></p>
+<p class="h5 py-2">Current number of topics: <%= it.statistics[0] %></p>
+<p class="h5 py-2">Current number of questions: <%= it.statistics[1] %></p>
+<p class="h5 py-2">Current number of question answers: <%= it.statistics[2] %></p>
 
 <% if (it.user && it.user.email) { %>  
-    <span class="navbar-text mr-3 h5">
+    <span class="navbar-text mr-3 h5 text-success pt-5">
         Already logged in as <%= it.user.email %>
       </span>
     </br>
       <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
 <% } else { %>
-    <a href="/auth/register" class="btn btn-outline-primary">Register</a>
+    <a href="/auth/register" class="btn btn-outline-success">Register</a>
     <a href="/auth/login" class="btn btn-primary">Login</a>
 <% } %>
 </div>

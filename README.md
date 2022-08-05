@@ -13,7 +13,7 @@
 - [x] Asking questions
 - [x] API
 - [ ] Access control
-- [ ] Styles
+- [x] Styles
 - [ ] Specifics
 - [ ] Documentation
 - [ ] At least 10 meaningful tests

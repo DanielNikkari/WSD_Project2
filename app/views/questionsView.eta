@@ -1,22 +1,24 @@
 <% layout("./layouts/layout.eta") %>
 
-<h2>Add question</h2>
+<h2 class="my-3 text-primary">Add question</h2>
 
 <form method="POST" action="/topics/<%= it.topic.id %>/questions" id="questionForm">
-    <textarea name="question_text" placeholder="Enter your question here..."></textarea>
-    <input type="submit" value="Add">
+    <div class="form-group">
+    <textarea class="form-control" name="question_text" placeholder="Enter your question here..."></textarea></br>
+    <input class="mt-0 btn btn-outline-success form-control" type="submit" value="Add">
+    </div>
 </form>
 
-<h1>Questions</h1>
+<h1 class="py-2">Questions</h1>
 
 <% if (it.questions && it.questions.length > 0) { %>
-    <ul>
+    <ul style="list-style-type: none;" class="bg-light rounded">
     <% it.questions.forEach(question => { %>
-        <li>
-            <a href="/topics/<%= it.topic.id %>/questions/<%= question.id %>"><%= question.question_text %></a>
+        <li class="py-2">
+            <a style="text-decoration: none;" class="h3" href="/topics/<%= it.topic.id %>/questions/<%= question.id %>"><%= question.question_text %></a>
         </li>
     <% }); %> 
     </ul>
 <% } else { %>
-    <p>No questions available.</p>
+    <p class="h3 bg-warning rounded">No questions available.</p>
 <% } %>

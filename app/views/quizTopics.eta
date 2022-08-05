@@ -1,15 +1,36 @@
 <% layout('./layouts/layout.eta') %>
 
-<h1 class="text-center p-5">Quiz Topics</h1>
-
+<h1 class="text-center p-5 text-primary display-3">Quiz Topics</h1>
+<% var i = 0; %>
 <% if (it.topics && it.topics.length > 0) { %>
-<ul style="list-style-type: none;" class="bg-light rounded">
+<ul style="list-style-type: none;" class="">
     <% it.topics.forEach(topic => { %>
-        <li class="p-3">
-            <a style="text-decoration: none;" class="h3" href="/quiz/<%= topic.id %>"><%= topic.name %></a>
+        <% if (i === 0) { %>
+            <div class="card text-center mx-auto bg-success m-4" style="width: 40rem;">
+            <% i++; %>
+        <% } else if (i === 1) { %>
+            <div class="card text-center mx-auto bg-warning m-4" style="width: 40rem;">
+            <% i++; %>
+        <% } else if (i === 2) { %>
+            <div class="card text-center mx-auto bg-primary m-4" style="width: 40rem;">
+            <% i++; %>
+        <% } else { %>
+            <div class="card text-center mx-auto bg-danger m-4" style="width: 40rem;">
+            <% i = 0; %>
+        <% } %>
+        <div class="card-body">
+        <li class="p-4">
+            <a id="qHover" style="text-decoration: none;" class="h2 text-white card-title stretched-link" href="/quiz/<%= topic.id %>"><%= topic.name %></a>
         </li>
+    </div>
+    </div>
     <% }) %>
 </ul>
 <% } else { %>
-    <p class="h3">No topics has been added.</p>
+    <p class="h3 bg-warning rounded">No topics has been added.</p>
 <% } %>
+<style type="text/css">
+    #qHover:hover { 
+        color: #dfe0e0 !important;
+    }
+</style>

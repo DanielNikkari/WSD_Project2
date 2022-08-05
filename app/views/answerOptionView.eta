@@ -1,29 +1,42 @@
 <% layout('./layouts/layout.eta') %>
 
-<h1>Question:</h1>
-<h2><%= it.question.text %></h2>
+<h1 class="my-3 text-primary">Question:</h1>
+<h2 class="display-4"><%= it.question.text %></h2>
 
-<h2>Add answer option</h2>
+<h2 class="mt-5 mb-3">Add answer option</h2>
 <form method="POST" action="/topics/<%= it.topic.id %>/questions/<%= it.question.id %>/options">
-    Correct: <input type="checkbox" name="is_correct"> <br/>
-    <textarea name="option_text" placeholder="Enter your answer option here..."></textarea> <br/>
-    <input type="submit" value="Add option">
+    <div class="form-group">
+    <div class="row">
+    <label class="col-sm-1 col-form-label" for="checkboxCorrect">Correct:</label>
+    <div class="col-sm-10">
+        <input id="checkboxCorrect" class="form-control" type="checkbox" name="is_correct"> <br/>
+    </div>
+    </div>
+    <textarea class="form-control" name="option_text" placeholder="Enter your answer option here..."></textarea> <br/>
+    <input class="mt-0 btn btn-outline-success form-control" type="submit" value="Add option">
+    </div>
 </form>
 
-<h2>Answer options:</h2>
+<h2 class="mt-5 mb-3">Answer options:</h2>
 <% if (it.answerOptions && it.answerOptions.length > 0) { %>
-<ul>
+<ul style="list-style-type: none;" class="bg-light rounded">
 <% it.answerOptions.forEach(option => { %>
-    <li>
-        <%= option.option_text %> <br/>Is correct: <%= option.is_correct %>
+    <li class="py-2">
+        <p class="my-0 py-2 h4"><%= option.option_text %></p> 
+        <p class="my-0 pt-2 h5 text-info">Is correct: </p>
+        <% if (option.is_correct === true) { %>
+            <p class="my-0 pb-2 h5 text-success"><%= option.is_correct %></p>
+        <% } else { %>
+            <p class="my-0 pb-2 h5 text-danger"><%= option.is_correct %></p>
+        <% } %>
         <form method="post" action="/topics/<%= it.topic.id %>/questions/<%= it.question.id %>/options/<%= option.id %>/delete">
-            <input type="submit" value="Delete option">
+            <input class="btn btn-outline-danger my-2" type="submit" value="Delete option">
         </form>
     </li>
 <% }) %>
 </ul>
 <% } else { %>
     <form method="post" action="/topics/<%= it.topic.id %>/questions/<%= it.question.id %>/delete">
-        <input type="submit" value="Delete question">
+        <input class="btn btn-outline-danger my-2" type="submit" value="Delete question">
     </form>
 <% } %>
