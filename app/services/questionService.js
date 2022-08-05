@@ -19,8 +19,16 @@ const getQuestions = async (topicId) => {
   return res.rows;
 };
 
-// Delete a question from database with id
+// Delete a question and dependencies from database with id
 const deleteQuestion = async (qId) => {
+  await executeQuery(
+    "DELETE FROM question_answers WHERE question_id = $1;",
+    qId
+  );
+  await executeQuery(
+    "DELETE FROM question_answer_options WHERE question_id = $1;",
+    qId
+  );
   await executeQuery("DELETE FROM questions WHERE id = $1;", qId);
 };
 

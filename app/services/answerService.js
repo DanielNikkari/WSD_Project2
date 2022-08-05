@@ -19,8 +19,12 @@ const getAnswerOptions = async (qId) => {
   return res.rows;
 };
 
-// Delete answer option with id
+// Delete answer option and dependencies with id
 const deleteAnswerOption = async (oId) => {
+  await executeQuery(
+    "DELETE FROM question_answers WHERE question_answer_option_id = $1;",
+    oId
+  );
   await executeQuery("DELETE FROM question_answer_options WHERE id = $1;", oId);
 };
 

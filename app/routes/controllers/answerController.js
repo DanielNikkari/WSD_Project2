@@ -32,7 +32,13 @@ const validate = (data) => {
 };
 
 // Add an answer option
-const addAnswerOption = async ({ params, request, response, rende, state }) => {
+const addAnswerOption = async ({
+  params,
+  request,
+  response,
+  render,
+  state,
+}) => {
   const user = await state.session.get("user");
   const data = await getData(request);
   data.errors = validate(data);

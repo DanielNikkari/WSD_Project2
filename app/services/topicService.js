@@ -18,6 +18,10 @@ const deleteTopic = async (id) => {
   res.rows.forEach(async (row) => {
     //console.log(row.id);
     await executeQuery(
+      "DELETE FROM question_answers WHERE question_id = $1;",
+      row.id
+    );
+    await executeQuery(
       "DELETE FROM question_answer_options WHERE question_id = $1;",
       row.id
     );
