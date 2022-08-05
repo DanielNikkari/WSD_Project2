@@ -1,7 +1,8 @@
 <% layout("./layouts/layout.eta") %>
 
 <div class="text-center">
-<h1 class="p-4 text-primary display-4">Quiz</h1>
+<h1 class="text-warning pt-4">Welcome to</h1>
+<h1 class="pb-4 text-primary display-3">?uizzer</h1>
 
 <h3 class="pb-3">Application for making fun quizes for various topics!</h3>
 
@@ -16,7 +17,7 @@
     </br>
       <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
 <% } else { %>
-    <a href="/auth/register" class="btn btn-outline-success">Register</a>
-    <a href="/auth/login" class="btn btn-primary">Login</a>
+    <a href="/auth/register" class="btn btn-outline-success mr-1 mt-3">Register</a>
+    <a href="/auth/login" class="btn btn-primary mr-1 mt-3">Login</a>
 <% } %>
 </div>
