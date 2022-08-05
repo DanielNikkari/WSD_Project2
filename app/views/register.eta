@@ -1,7 +1,7 @@
 <% layout("./layouts/layout.eta") %>
 
 <div class="text-center">
-<h1 class="p-4">Register</h1>
+<h1 class="p-4 text-success">Register</h1>
 
 <form method="post" action="/auth/register">
     <div class="form-group">

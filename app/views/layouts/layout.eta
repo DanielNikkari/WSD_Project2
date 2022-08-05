@@ -27,7 +27,7 @@
     </nav>
     <div class="container">
     <% if (it.data && it.data.errors && it.data.errors.length > 0) { %>
-    <div class="bg-danger text-white rounded p-3 mb-2"> <!-- px-4 py-1 -->
+    <div class="bg-danger text-white rounded p-3 mb-2 mt-3"> <!-- px-4 py-1 -->
     <p class="h5">ERROR:</p>
     <ul>
     <% it.data.errors.forEach(error => { %>

@@ -1,7 +1,7 @@
 <% layout("./layouts/layout.eta") %>
 
 <div class="text-center">
-<h1 class="p-4">Login</h1>
+<h1 class="p-4 text-primary">Login</h1>
 
 <form method="post" action="/auth/login">
     <div class="form-group">
@@ -11,9 +11,9 @@
         Password:</br>
         <input class="form-control mx-auto" style="width: 20rem;" type="password" name="password"></br>
     </div>
-    <input class="mt-3 btn btn-outline-success" type="submit" value="Login">
+    <input class="mt-3 btn btn-outline-primary" type="submit" value="Login">
     </div>
 </form>
 
-<a href="/auth/register" class="btn btn-outline-primary">Register</a>
+<a href="/auth/register" class="btn btn-outline-success">Register</a>
 </div>
