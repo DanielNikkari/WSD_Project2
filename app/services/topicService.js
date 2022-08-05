@@ -11,21 +11,22 @@ const addTopic = async (user_id, name) => {
 
 // Delete topic with its questions and answer options from the database using ids
 const deleteTopic = async (id) => {
-  const res = await executeQuery(
+  var res = await executeQuery(
     "SELECT id FROM questions WHERE topic_id = $1;",
     id
   );
-  res.rows.forEach(async (row) => {
-    //console.log(row.id);
+  console.log(res);
+  for (let i = 0; i < res.rows.length; i++) {
+    console.log(res.rows[i].id);
     await executeQuery(
       "DELETE FROM question_answers WHERE question_id = $1;",
-      row.id
+      res.rows[i].id
     );
     await executeQuery(
       "DELETE FROM question_answer_options WHERE question_id = $1;",
-      row.id
+      res.rows[i].id
     );
-  });
+  }
   await executeQuery("DELETE FROM questions WHERE topic_id = $1;", id);
   await executeQuery("DELETE FROM topics WHERE id = $1;", id);
 };
