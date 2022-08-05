@@ -12,9 +12,9 @@
 - [x] Login functionality
 - [x] Asking questions
 - [x] API
-- [ ] Access control
+- [x] Access control
 - [x] Styles
-- [ ] Specifics
+- [x] Specifics
 - [ ] Documentation
 - [ ] At least 10 meaningful tests
 - [ ] Running, deployment and documentation
