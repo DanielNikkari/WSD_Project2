@@ -1,4 +1,5 @@
 import * as questionService from "../../services/questionService.js";
+import { getTopic } from "../../services/topicService.js";
 
 // Function to extract data from request
 const getData = async (request) => {
@@ -36,7 +37,7 @@ const addQuestion = async ({ params, request, response, render, state }) => {
     render("questionsView.eta", {
       data: data,
       questions: await questionService.getQuestions(params.id),
-      topic: { id: params.id },
+      topic: { id: params.id, name: (await getTopic(params.id)).name },
       user: await state.session.get("user"),
     });
   } else {
@@ -55,7 +56,7 @@ const addQuestion = async ({ params, request, response, render, state }) => {
 const listQuestions = async ({ params, render, state }) => {
   render("questionsView.eta", {
     questions: await questionService.getQuestions(params.id),
-    topic: { id: params.id },
+    topic: { id: params.id, name: (await getTopic(params.id)).name },
     user: await state.session.get("user"),
   });
 };

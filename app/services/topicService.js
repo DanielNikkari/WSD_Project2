@@ -37,4 +37,10 @@ const getTopics = async () => {
   return res.rows;
 };
 
-export { addTopic, deleteTopic, getTopics };
+// Get a topic by its id
+const getTopic = async (tId) => {
+  const res = await executeQuery("SELECT * FROM topics WHERE id = $1;", tId);
+  return res.rows[0];
+};
+
+export { addTopic, deleteTopic, getTopics, getTopic };

@@ -1,7 +1,19 @@
 <% layout('./layouts/layout.eta') %>
 
 <div class="text-center">
-<p class="random_question display-4 mt-3 mb-4 text-primary"><%= it.data.question.question_text %></p>
+
+<% var i = Math.floor(Math.random() * 4); %>
+    <% if (i === 0) { %>
+        <p class="random_question display-4 mt-3 mb-4 text-primary"><%= it.data.question.question_text %></p>
+    <% } else if (i === 1) { %>
+        <p class="random_question display-4 mt-3 mb-4 text-warning"><%= it.data.question.question_text %></p>
+    <% } else if (i === 2) { %>
+        <p class="random_question display-4 mt-3 mb-4 text-success"><%= it.data.question.question_text %></p>
+    <% } else { %>
+        <p class="random_question display-4 mt-3 mb-4 text-danger"><%= it.data.question.question_text %></p>
+    <% } %>
+
+<!--- <p class="random_question display-4 mt-3 mb-4 text-primary"><%= it.data.question.question_text %></p> --->
 
 <% if (it.data.answerOptions && it.data.answerOptions.length > 0) { %>
 <ul style="list-style-type: none;">
