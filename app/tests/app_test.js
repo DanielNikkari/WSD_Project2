@@ -10,6 +10,6 @@ Deno.test(
   "A get request to /api/questions/random responds with an object",
   async () => {
     const testClient = await superoak(app);
-    await testClient.get("/api/questions/random").expect({});
+    await testClient.get("/api/questions/random").expect();
   }
 );

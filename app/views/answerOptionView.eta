@@ -40,3 +40,5 @@
         <input class="btn btn-outline-danger my-2" type="submit" value="Delete question">
     </form>
 <% } %>
+
+<a class="btn btn-outline-secondary btn-lg btn-block my-5" href="/topics/<%= it.topic.id %>">Back</a>

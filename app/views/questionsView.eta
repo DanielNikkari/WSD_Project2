@@ -35,3 +35,5 @@
 <% } else { %>
     <p class="h3 bg-warning rounded">No questions available.</p>
 <% } %>
+
+<a class="btn btn-outline-secondary btn-lg btn-block my-5" href="/topics">Back</a>
