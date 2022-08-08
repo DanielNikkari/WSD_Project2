@@ -15,9 +15,9 @@ const deleteTopic = async (id) => {
     "SELECT id FROM questions WHERE topic_id = $1;",
     id
   );
-  console.log(res);
+  //console.log(res);
   for (let i = 0; i < res.rows.length; i++) {
-    console.log(res.rows[i].id);
+    //console.log(res.rows[i].id);
     await executeQuery(
       "DELETE FROM question_answers WHERE question_id = $1;",
       res.rows[i].id

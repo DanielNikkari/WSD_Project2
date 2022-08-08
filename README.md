@@ -16,7 +16,7 @@
 - [x] Styles
 - [x] Specifics
 - [ ] Documentation
-- [ ] At least 10 meaningful tests
+- [x] At least 10 meaningful tests
 - [ ] Running, deployment and documentation
 - [ ] Usability
 

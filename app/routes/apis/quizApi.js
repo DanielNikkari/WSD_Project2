@@ -22,6 +22,7 @@ const apiRandQuestion = async ({ response }) => {
 
     // Return data in the response body
     response.body = apiData;
+    response.status = 200;
   } else {
     // Return an empty object of no questions found
     response.body = {};

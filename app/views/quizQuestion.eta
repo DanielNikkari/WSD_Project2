@@ -30,4 +30,7 @@
     <p h3 bg-warning rounded>No answer options found...</p>
     <a href="/quiz/<%= it.data.tId %>">Next question</a>
 <% } %>
+
 </div>
+
+<a class="btn btn-outline-secondary btn mt-5 mb-3 float-right" href="/quiz">Back to Topics</a>
