@@ -11,7 +11,7 @@
         Password:</br>
         <input class="form-control mx-auto" style="width: 20rem;" type="password" name="password"></br>
     </div>
-    <input class="mt-3 btn btn-outline-primary" type="submit" value="Login">
+    <input class="mt-3 btn btn-primary" type="submit" value="Login">
     </div>
 </form>
 

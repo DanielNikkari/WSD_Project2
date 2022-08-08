@@ -21,7 +21,7 @@
           </span>
           <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
     <% } else { %>
-        <a href="/auth/register" class="btn btn-outline-primary mr-1">Register</a>
+        <a href="/auth/register" class="btn btn-outline-success mr-1">Register</a>
         <a href="/auth/login" class="btn btn-primary mr-1">Login</a>
     <% } %>
     </nav>
