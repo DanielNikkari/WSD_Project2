@@ -4,11 +4,11 @@
 
 **Qu?zzer** is an application for making fun quizzes on various topics. It was made as part of the course _CS-C3170 - Web Software Development_. In the application the user can create a topic for which she/he may add question and the answer options for these questions. Moreover, the users can go and test their knowledge by answering the created quizzes. In addition to creating topics, question and answer options, users may delete them. However, only an admin can delete a topic.
 
-If you would rather use an API you may make an GET request to <code>https://wsd-proj2-quizzer.herokuapp.com/api/questions/random</code> and you will get a random question. To answer the question you can make a POST request with the data: <code>curl -X POST -d '{"questionId":(question number),"optionId":(option number)}' https://wsd-proj2-quizzer.herokuapp.com/api/questions/answer</code>. The API will responde to this by showing if the answer was correct or incorrect.
+If you would rather use an API you can make a GET request to <code>https://wsd-proj2-quizzer.herokuapp.com/api/questions/random</code> and you will get a random question. To answer the question you can make a POST request with the data: <code>curl -X POST -d '{"questionId":(question number),"optionId":(option number)}' https://wsd-proj2-quizzer.herokuapp.com/api/questions/answer</code>. The API will respond to this by showing if the answer was correct or incorrect.
 
 So go ahead, open the link and test your knowledge! :)
 
-https://wsd-proj2-quizzer.herokuapp.com
+### [Open application]https://wsd-proj2-quizzer.herokuapp.com
 
 ## Running the application locally
 
