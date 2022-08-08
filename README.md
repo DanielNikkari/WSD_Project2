@@ -8,7 +8,7 @@ If you would rather use an API you can make a GET request to <code>https://wsd-p
 
 So go ahead, open the link and test your knowledge! :)
 
-### [Open application]https://wsd-proj2-quizzer.herokuapp.com
+**[Open application]https://wsd-proj2-quizzer.herokuapp.com**
 
 ## Running the application locally
 
