@@ -39,6 +39,10 @@ This should run the tests automatically on Docker.
 
 The application uses **MIT License** and the specifics are found in the _LICENSE_ file. Read more about MIT License here https://en.wikipedia.org/wiki/MIT_License
 
+## Application structure
+
+The application uses **three-tier architecture**: client, server, database. The application has **four layers**: views, controllers, services, database. The application has been built using **Deno** and **Oak**.
+
 ### To-Do
 
 - [x] Main page and navigation to topics and questions
@@ -56,11 +60,5 @@ The application uses **MIT License** and the specifics are found in the _LICENSE
 - [x] Specifics
 - [x] Documentation
 - [x] At least 10 meaningful tests
-- [ ] Running, deployment and documentation
+- [x] Running, deployment and documentation
 - [x] Usability
-
-Write the documentation of your project here. Do not include your personal
-details (e.g. name or student number).
-
-Remember to include the address of the online location where your project is
-running as it is a key part of the submission.
