@@ -16,7 +16,7 @@
 <!--- <p class="random_question display-4 mt-3 mb-4 text-primary"><%= it.data.question.question_text %></p> --->
 
 <% if (it.data.answerOptions && it.data.answerOptions.length > 0) { %>
-<ul style="list-style-type: none;">
+<ul style="list-style-type: none;" class="px-0">
     <% it.data.answerOptions.forEach(option => { %>
         <li class="h1">
             <%= option.option_text %></br>

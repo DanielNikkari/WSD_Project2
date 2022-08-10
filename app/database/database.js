@@ -1,10 +1,7 @@
 import { Pool } from "../deps.js";
 
 const CONCURRENT_CONNECTIONS = 2;
-/*const connectionPool = new Pool(
-  {},
-  CONCURRENT_CONNECTIONS
-);*/
+//const connectionPool = new Pool({}, CONCURRENT_CONNECTIONS);
 let connectionPool;
 
 try {

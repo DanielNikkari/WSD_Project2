@@ -3,7 +3,7 @@
 <h1 class="text-center p-5 text-primary display-3">Quiz Topics</h1>
 <% var i = 0; %>
 <% if (it.topics && it.topics.length > 0) { %>
-<ul style="list-style-type: none;" class="">
+<ul style="list-style-type: none;" class="px-0">
     <% it.topics.forEach(topic => { %>
         <% if (i === 0) { %>
             <div class="card text-center mx-auto bg-success m-4" style="width: 40rem;">
@@ -32,5 +32,10 @@
 <style type="text/css">
     #qHover:hover { 
         color: #dfe0e0 !important;
+    }
+    @media (max-width: 600px) {
+        .card {
+            width: 17rem !important;
+        }
     }
 </style>
