@@ -17,13 +17,14 @@ try {
   console.log(e);
 }
 
-const executeQuery = async (query, ...args) => {
+// Update: ...args -> params
+const executeQuery = async (query, params) => {
   const response = {};
   let client;
 
   try {
     client = await connectionPool.connect();
-    const result = await client.queryObject(query, ...args);
+    const result = await client.queryObject(query, params);
     if (result.rows) {
       response.rows = result.rows;
     }
