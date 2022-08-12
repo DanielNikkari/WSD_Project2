@@ -27,7 +27,7 @@
 <% if (it.questions && it.questions.length > 0) { %>
     <ul style="list-style-type: none;" class="bg-light rounded">
     <% it.questions.forEach(question => { %>
-        <li class="py-2">
+        <li class="py-3">
             <a style="text-decoration: none;" class="h3" href="/topics/<%= it.topic.id %>/questions/<%= question.id %>"><%= question.question_text %></a>
         </li>
     <% }); %> 
