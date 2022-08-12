@@ -15,9 +15,10 @@ const apiRandQuestion = async ({ response }) => {
     apiData.questionId = randomQuestion.id;
     apiData.questionText = randomQuestion.question_text;
     for (let i = 0; i < answerOptions.length; i++) {
-      delete answerOptions[i].question_id;
-      delete answerOptions[i].is_correct;
-      apiData.answerOptions.push(answerOptions[i]);
+      optionData = { optionId: 0, optionText: "" };
+      optionData.optionId = answerOptions[i].id;
+      optionData.optionText = answerOptions[i].option_text;
+      apiData.answerOptions.push(optionData);
     }
 
     // Return data in the response body

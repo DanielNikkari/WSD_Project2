@@ -8,7 +8,11 @@
      </style>
 <% } else { %>
     <p class="display-2 mt-5 pt-5 text-white" id="incorrect">Incorrect!</p>
-    <p class="h1 my-5 text-white" id="incorrect_fix">The correct option was <%= it.answer.fix %></p>
+    <% if (it.answer.fix && it.answer.fix.length > 0) { %>
+        <p class="h1 my-5 text-white" id="incorrect_fix">The correct option was <%= it.answer.fix %></p>
+    <% } else { %>
+        <p class="h1 my-5 text-white" id="incorrect_fix">This question has no correct answer option given...</p>
+    <% } %>
     <style type="text/css">
         body { background: #ff4444 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
      </style>

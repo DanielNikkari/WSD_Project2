@@ -98,11 +98,19 @@ const correct = async ({ params, render, state }) => {
 const incorrect = async ({ params, render, state }) => {
   const user = await state.session.get("user");
   const correctOption = (await quizService.correctOption(params.qId))[0];
-  render("quizAnswerCheck.eta", {
-    answer: { correctness: false, fix: correctOption.option_text },
-    tId: params.tId,
-    user: user,
-  });
+  if (correctOption) {
+    render("quizAnswerCheck.eta", {
+      answer: { correctness: false, fix: correctOption.option_text },
+      tId: params.tId,
+      user: user,
+    });
+  } else {
+    render("quizAnswerCheck.eta", {
+      answer: { correctness: false, fix: "" },
+      tId: params.tId,
+      user: user,
+    });
+  }
 };
 
 export {
