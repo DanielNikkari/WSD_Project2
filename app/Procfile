@@ -1,1 +1,0 @@
-web: deno run --allow-all --unstable --unsafely-ignore-certificate-errors heroku-deploy.js ${PORT}
