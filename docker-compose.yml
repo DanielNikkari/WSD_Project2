@@ -1,12 +1,12 @@
 version: "3.4"
 
 services:
-  drill-and-practice:
-    build: drill-and-practice
-    image: drill-and-practice
+  app:
+    build: app
+    image: app
     restart: "no"
     volumes:
-      - ./drill-and-practice/:/app
+      - ./app/:/app
     ports:
       - 7777:7777
     depends_on:

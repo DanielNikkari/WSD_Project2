@@ -1,0 +1,37 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="text-center">
+<h1 class="text-warning pt-4">Welcome to</h1>
+<h1 class="pb-4 text-primary display-3 quizzer">Qu?zzer</h1>
+
+<h3 class="pb-3">Application for making fun quizes on various topics!</h3>
+
+<p class="h5 py-2 text-success">Current number of topics: <%= it.statistics[0] %></p>
+<p class="h5 py-2 text-danger">Current number of questions: <%= it.statistics[1] %></p>
+<p class="h5 py-2 text-primary">Current number of question answers: <%= it.statistics[2] %></p>
+
+<% if (it.user && it.user.email) { %>  
+    <span class="navbar-text mr-3 h5 text-success pt-5">
+        Already logged in as <%= it.user.email %>
+      </span>
+    </br>
+      <a href="/auth/logout" class="btn btn-outline-danger mr-1">Logout</a>
+<% } else { %>
+    <a href="/auth/register" class="btn btn-outline-success mr-1 mt-3">Register</a>
+    <a href="/auth/login" class="btn btn-primary mr-1 mt-3">Login</a>
+<% } %>
+</div>
+
+<style type="text/css">
+  .quizzer {
+    animation:name 8s infinite;
+  }
+
+@keyframes name {
+    0% {color:#0275d8;}
+    25% {color:#5cb85c;}
+    50% {color: #f0ad4e;}
+    75% {color: #d9534f;}
+    100% {color: #0275d8;}
+  }
+</style>
